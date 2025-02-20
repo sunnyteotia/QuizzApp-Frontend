@@ -13,7 +13,7 @@ export default function QuizPage() {
     useEffect(() => {
         async function fetchQuizzes() {
             try {
-                const response = await fetch("http://localhost:3000/api/quiz/quizzes", {
+                const response = await fetch("https://quizapp-2-ui7y.onrender.com/api/quiz/quizzes", {
                     headers: { Authorization: `Bearer ${getAuthToken()}` },
                 });
                 const data = await response.json();

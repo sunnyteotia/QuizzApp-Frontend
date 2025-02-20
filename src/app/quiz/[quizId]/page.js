@@ -20,7 +20,7 @@ export default function QuizDetailPage() {
     useEffect(() => {
         async function fetchQuiz() {
             try {
-                const response = await fetch(`http://localhost:3000/api/quiz/get/${quizId}`, {
+                const response = await fetch(`https://quizapp-2-ui7y.onrender.com/api/quiz/get/${quizId}`, {
                     headers: { Authorization: `Bearer ${getAuthToken()}` },
                 });
                 const data = await response.json();
@@ -79,7 +79,7 @@ export default function QuizDetailPage() {
 
     const saveAttempt = async (finalAnswers) => {
         try {
-            await fetch("http://localhost:3000/api/attempt/save", {
+            await fetch("https://quizapp-2-ui7y.onrender.com/api/attempt/save", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

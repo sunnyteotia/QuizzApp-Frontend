@@ -10,7 +10,7 @@ export default function LeaderboardPage() {
 
     useEffect(() => {
         async function fetchLeaderboard() {
-            const response = await fetch(`http://localhost:3000/api/leaderboard/${quizId}`, {
+            const response = await fetch(`https://quizapp-2-ui7y.onrender.com/api/leaderboard/${quizId}`, {
                 headers: {
                     "Authorization": `Bearer ${getAuthToken()}`,
                     "Content-Type": "application/json"
