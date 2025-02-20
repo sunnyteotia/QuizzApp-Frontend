@@ -14,9 +14,9 @@
 ✅ Participate in quizzes  
 ✅ Get instant feedback on answers  
 ✅ See a real-time scoreboard  
-✅ Play only when the admin starts the quiz  
 
-The app is built with **Next.js**, styled with **Tailwind CSS**, and manages state using **Zustand**.
+
+The app is built with **Next.js**, styled with **Tailwind CSS**.
 
 ---
 
