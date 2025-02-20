@@ -20,7 +20,7 @@ Here’s the **README.md** file content you can use for your **QuizApp** fronten
 ✅ See a real-time scoreboard  
 ✅ Play only when the admin starts the quiz  
 
-The app is built with **Next.js**, styled with **Tailwind CSS**, and manages state using **Zustand**.
+The app is built with **Next.js**, styled with **Tailwind CSS**.
 
 ---
 
@@ -79,8 +79,6 @@ This project is deployed on **Vercel**. To deploy it manually:
 ## **🛠 Built With**
 - **Next.js** - React framework for fast web applications  
 - **Tailwind CSS** - Utility-first CSS framework  
-- **Zustand** - Lightweight state management  
-- **React Toastify** - Notification system  
 - **Axios** - API requests  
 
 ---
