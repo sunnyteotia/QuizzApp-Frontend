@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 
@@ -10,8 +10,13 @@ export default function LeaderboardPage() {
     const [leaderboard, setLeaderboard] = useState([]);
 
     const getAuthToken = () => sessionStorage.getItem("authToken");
-
+    const router = useRouter();
     useEffect(() => {
+        const token = sessionStorage.getItem("token");
+
+    if (!token) {
+      router.push("/register"); // Redirect if no token found
+    }
         async function fetchLeaderboard() {
             try {
                 const response = await fetch(`https://quizapp-2-ui7y.onrender.com/api/leaderboard/${quizId}`, {
