@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
-
+import { Trophy, User, Star, ListOrdered } from "lucide-react";
 export default function LeaderboardPage() {
     const { quizId } = useParams(); // ✅ Correctly get the quizId
     const [leaderboard, setLeaderboard] = useState([]);
@@ -37,39 +37,47 @@ export default function LeaderboardPage() {
 
     return (
         <div className="flex flex-col items-center justify-center p-6">
-            <Card className="w-full md:w-3/4 lg:w-1/2 bg-white shadow-lg p-6">
-                <CardHeader className="text-2xl font-bold text-center">Leaderboard</CardHeader>
-                <CardContent>
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead className="w-1/6">Rank</TableHead>
-                                <TableHead className="w-2/6">User</TableHead>
-                                <TableHead className="w-1/6">Score</TableHead>
-                                <TableHead className="w-2/6">Total Attempts</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {leaderboard.length > 0 ? (
-                                leaderboard.map((entry, index) => (
-                                    <TableRow key={entry.userId}>
-                                        <TableCell>{index + 1}</TableCell>
-                                        <TableCell>{entry.username}</TableCell>
-                                        <TableCell>{entry.score}</TableCell>
-                                        <TableCell>{entry.attempts}</TableCell>
-                                    </TableRow>
-                                ))
-                            ) : (
-                                <TableRow>
-                                    <TableCell colSpan={4} className="text-center">
-                                        No attempts yet.
-                                    </TableCell>
-                                </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
-                </CardContent>
-            </Card>
-        </div>
+      <div className="w-full md:w-3/4 lg:w-1/2 bg-white shadow-xl rounded-lg p-6 border border-gray-200 animate-fade-in">
+        <h1 className="text-3xl font-bold text-center mb-6 flex items-center justify-center gap-2">
+          <Trophy className="text-yellow-500" /> Leaderboard
+        </h1>
+
+        <table className="w-full border-collapse">
+          <thead>
+            <tr className="bg-gray-900 text-white text-lg">
+              <th className="p-3 text-left">Rank</th>
+              <th className="p-3 text-left">User</th>
+              <th className="p-3 text-left">Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leaderboard.length > 0 ? (
+              leaderboard.map((entry, index) => (
+                <tr
+                  key={entry.userId}
+                  className={`text-lg ${
+                    index % 2 === 0 ? "bg-gray-100" : "bg-white"
+                  } hover:bg-gray-200 transition-all duration-200`}
+                >
+                  <td className="p-3 flex items-center gap-2 font-semibold">
+                    {index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1}
+                  </td>
+                  <td className="p-3 flex items-center gap-2 font-medium">
+                    <User className="text-blue-500" /> {entry.username}
+                  </td>
+                  <td className="p-3 font-bold">{entry.score} pts</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={3} className="text-center p-4 font-semibold text-gray-500">
+                  No attempts yet.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
     );
 }
