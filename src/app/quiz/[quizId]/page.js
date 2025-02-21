@@ -168,6 +168,5 @@ export default function QuizDetailPage() {
     </Card>
 </div>
 
-    
     );
 }
